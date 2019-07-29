@@ -1,9 +1,17 @@
 package no.roligheten.officeShelf.configs
 
+import no.roligheten.officeShelf.bookProviders.BookProvider
+import no.roligheten.officeShelf.bookProviders.PlaceholderBookProvider
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
-import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 @Configuration
 @EnableJpaRepositories("no.roligheten.officeShelf.repositories")
-class OfficeShelfApplicationConfig {}
+class OfficeShelfApplicationConfig {
+
+    @Bean
+    fun bookProvider(): BookProvider {
+        return PlaceholderBookProvider()
+    }
+}

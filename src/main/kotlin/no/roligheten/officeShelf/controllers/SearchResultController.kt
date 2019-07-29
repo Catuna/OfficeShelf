@@ -12,7 +12,7 @@ class SearchResultController(private val bookRepository: BookRepository) {
     @GetMapping(path=["search"])
     fun search(@RequestParam("query") query: String, model: Model): String {
 
-        val matchingBooks = bookRepository.findAllByFuzzyTitle(query)
+        val matchingBooks = bookRepository.findByTitleIsContaining(query)
 
         model.addAttribute("matchingBooks", matchingBooks)
 
