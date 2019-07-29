@@ -1,4 +1,4 @@
-package no.roligheten.OfficeShelf
+package no.roligheten.officeShelf
 
 import org.junit.Test
 import org.junit.runner.RunWith

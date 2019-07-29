@@ -1,4 +1,4 @@
-package no.roligheten.OfficeShelf
+package no.roligheten.officeShelf
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
