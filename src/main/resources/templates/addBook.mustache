@@ -1,4 +1,4 @@
-<html>
+{{>header}}
 <h1>Add book to shelf</h1>
 {{#bookMatch.imageUrl}}<img src="{{bookMatch.imageUrl}}">{{/bookMatch.imageUrl}}
 <form method="post" action="postBook">
@@ -13,4 +13,4 @@
     <input type="text" name="imageUrl" value="{{#bookMatch.imageUrl}}{{bookMatch.imageUrl}}{{/bookMatch.imageUrl}}" />
     <br /><input type="submit" value="Add to shelf" />
 </form>
-</html>
+{{>footer}}

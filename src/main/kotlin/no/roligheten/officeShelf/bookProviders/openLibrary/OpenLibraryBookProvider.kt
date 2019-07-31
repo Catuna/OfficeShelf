@@ -28,7 +28,7 @@ class OpenLibraryBookProvider(val apiBaseUrl: String): BookProvider {
             Book(null,
                 bookDto.title,
                 null,
-                Year.of(Integer.valueOf(bookDto.publishDate)),
+                try { Year.of(Integer.valueOf(bookDto.publishDate)) } catch(e: Exception) { null },
                 isbn,
                 bookDto.cover?.medium)
     }

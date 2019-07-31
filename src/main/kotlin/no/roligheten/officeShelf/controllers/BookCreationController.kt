@@ -26,11 +26,11 @@ class BookCreationController(private val bookProvider: BookProvider,
     }
 
     @PostMapping(path=["postBook"])
-    fun postBook(@RequestParam("title") title: String,
-                 @RequestParam("author") author: String,
-                 @RequestParam("publishYear") publishYear: Year,
-                 @RequestParam("isbn") isbn: String,
-                 @RequestParam("imageUrl") imageUrl: String): ResponseEntity<Any> {
+    fun postBook(@RequestParam("title") title: String?,
+                 @RequestParam("author") author: String?,
+                 @RequestParam("publishYear") publishYear: Year?,
+                 @RequestParam("isbn") isbn: String?,
+                 @RequestParam("imageUrl") imageUrl: String?): ResponseEntity<Any> {
 
         val bookToAdd = Book(null, title, author, publishYear, isbn, imageUrl)
         bookRepository.save(bookToAdd)

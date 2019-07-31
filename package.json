@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass frontend/styles/*.scss target/classes/META-INF/resources/bundle.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.22.9"
+  },
+  "dependencies": {
+    "build": "^0.1.4"
+  }
+}
