@@ -7,8 +7,9 @@ import javax.persistence.Id
 
 @Entity
 data class Book(
-        @Id @GeneratedValue val id: Int,
-        val title: String,
-        val author: String,
-        val publishYear: Year,
-        val isbn: String)
+        @Id @GeneratedValue val id: Int?,
+        val title: String?,
+        val author: String?,
+        val publishYear: Year?,
+        val isbn: String?,
+        val imageUrl: String?)

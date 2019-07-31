@@ -29,9 +29,10 @@ class BookCreationController(private val bookProvider: BookProvider,
     fun postBook(@RequestParam("title") title: String,
                  @RequestParam("author") author: String,
                  @RequestParam("publishYear") publishYear: Year,
-                 @RequestParam("isbn") isbn: String): ResponseEntity<Any> {
+                 @RequestParam("isbn") isbn: String,
+                 @RequestParam("imageUrl") imageUrl: String): ResponseEntity<Any> {
 
-        val bookToAdd = Book(0, title, author, publishYear, isbn)
+        val bookToAdd = Book(null, title, author, publishYear, isbn, imageUrl)
         bookRepository.save(bookToAdd)
 
         return ResponseEntity.ok("")
