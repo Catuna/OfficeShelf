@@ -18,19 +18,23 @@ class OpenLibraryBookProvider(val apiBaseUrl: String): BookProvider {
 
         val response = httpClient.newCall(request).execute()
 
-        val bookDto = Klaxon()
-                .converter(OpenLibraryJsonConverter())
-                .parse<OpenLibraryBookDTO>(response.body!!.string())
 
-        return if (bookDto == null)
+
+        return try {
+            val bookDto = Klaxon()
+                    .converter(OpenLibraryJsonConverter())
+                    .parse<OpenLibraryBookDTO>(response.body!!.string())
+            bookDto?.run {
+                Book(null,
+                        title,
+                        null,
+                        try { Year.of(Integer.valueOf(publishDate)) } catch(e: IllegalArgumentException) { null },
+                        isbn,
+                        cover?.medium)
+            }
+        } catch (e: KlaxonException) {
             null
-        else
-            Book(null,
-                bookDto.title,
-                null,
-                try { Year.of(Integer.valueOf(bookDto.publishDate)) } catch(e: Exception) { null },
-                isbn,
-                bookDto.cover?.medium)
+        }
     }
 
     private fun bookUrlByIsbn(isbn: String): URL {
@@ -39,16 +43,19 @@ class OpenLibraryBookProvider(val apiBaseUrl: String): BookProvider {
 }
 
 
-data class OpenLibraryBookDTO(@Json(name = "publish_date") val publishDate: String?, val title: String?, val cover: CoverDTO?)
+data class OpenLibraryBookDTO(@Json(name = "publish_date") val publishDate: String? = null, val title: String? = null, val cover: CoverDTO? = null)
 
-data class CoverDTO(val medium: String?)
+data class CoverDTO(val medium: String? = null)
 
 class OpenLibraryJsonConverter: Converter {
     override fun canConvert(cls: Class<*>): Boolean = cls == OpenLibraryBookDTO::class.java
 
     override fun fromJson(jv: JsonValue): OpenLibraryBookDTO? {
-        val wrappedBook = jv.obj?.entries?.first()?.value as JsonObject
-        return Klaxon().parseFromJsonObject<OpenLibraryBookDTO>(wrappedBook)
+        val wrappedBook = jv.obj?.entries?.firstOrNull()?.value
+
+        wrappedBook ?: throw KlaxonException("No matching result found")
+
+        return Klaxon().parseFromJsonObject<OpenLibraryBookDTO>(wrappedBook as JsonObject)
     }
 
     override fun toJson(value: Any): String {
