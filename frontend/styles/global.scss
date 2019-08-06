@@ -1,8 +1,22 @@
+@import 'variables';
+
 main {
-    max-width: 850px;
+    max-width: $page-width;
     margin: auto;
+    margin-top: 50px;
 }
 
-body {
- font-family: "Open Sans", sans-serif;
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+input {
+    background-color: white;
+    padding: 5px 17px;
+    border-radius: 1em;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 2px;
 }

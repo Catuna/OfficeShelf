@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam
 @Controller
 class SearchResultController(private val bookRepository: BookRepository) {
 
-    @GetMapping(path=["search"])
-    fun search(@RequestParam("query") query: String, model: Model): String {
+    @GetMapping(path=[""])
+    fun search(@RequestParam("query") query: String?, model: Model): String {
 
-        val matchingBooks = bookRepository.findByTitleIsContaining(query)
+        val matchingBooks = if (query == null)
+            bookRepository.findAll()
+        else
+            bookRepository.findByTitleIsContaining(query)
 
         model.addAttribute("matchingBooks", matchingBooks)
+        model.addAttribute("query", query ?: "")
 
         return "searchResults"
     }

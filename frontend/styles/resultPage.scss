@@ -1,0 +1,19 @@
+.book-result-container {
+     height: 220px;
+}
+
+.image-container {
+    float: left;
+    margin-right: 2em;
+    width: 20%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.text-container {
+    width: 80%;
+    > h1 {
+        font-size: 20pt;
+    }
+}

@@ -1,9 +1,4 @@
 {{>header}}
-<form method="get" action="search">
-    <input type="text" name="query" />
-    <input type="submit" value="Search" />
-</form>
-<h1>Search results</h1>
 {{#matchingBooks}}
     {{>bookResult}}
 {{/matchingBooks}}

@@ -1,0 +1,28 @@
+@import 'variables';
+
+.header {
+    background-color: $primary-color;
+    color: $secondary-color;
+
+    > div {
+        margin: auto;
+        max-width: 850px;
+        height: 60px;
+        font-size: 30px;
+        line-height: 54px;
+
+        > .left-container {
+            display: inline;
+            float: left;
+        }
+        > .right-container {
+            display: inline;
+            float: right;
+
+            > form {
+                display: inline;
+                margin-left: 1em;
+            }
+        }
+    }
+}

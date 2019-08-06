@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "sass frontend/styles/*.scss target/classes/META-INF/resources/bundle.css"
+    "build": "sass frontend/styles/root.scss target/classes/META-INF/resources/bundle.css"
   },
   "author": "",
   "license": "ISC",

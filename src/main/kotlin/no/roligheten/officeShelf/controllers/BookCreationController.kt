@@ -6,6 +6,7 @@ import no.roligheten.officeShelf.repositories.BookRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import java.time.Year
@@ -13,6 +14,10 @@ import java.time.Year
 @Controller
 class BookCreationController(private val bookProvider: BookProvider,
                              private val bookRepository: BookRepository) {
+
+
+    @GetMapping(path=["add"])
+    fun add(): String = "addBookFrontpage"
 
     @PostMapping(path=["lookup"])
     fun lookup(@RequestParam("isbn") isbn: String?, model: Model): String {
