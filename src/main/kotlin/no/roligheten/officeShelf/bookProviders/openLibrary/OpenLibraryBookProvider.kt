@@ -18,7 +18,7 @@ class OpenLibraryBookProvider(val apiBaseUrl: String): BookProvider {
 
         val response = httpClient.newCall(request).execute()
 
-
+        if (!response.isSuccessful) return null
 
         return try {
             val bookDto = Klaxon()
