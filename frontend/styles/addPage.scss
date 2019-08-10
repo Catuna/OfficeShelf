@@ -1,4 +1,4 @@
-.book-result-container {
+.add-book-container {
      height: 220px;
      > .image-container {
          float: left;
@@ -12,6 +12,9 @@
          width: 80%;
          > h1 {
              font-size: 20pt;
+         }
+         input {
+            margin-bottom: 10px;
          }
      }
 }
