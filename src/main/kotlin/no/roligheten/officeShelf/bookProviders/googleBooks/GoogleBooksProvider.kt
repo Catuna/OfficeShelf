@@ -46,7 +46,7 @@ class GoogleBooksProvider(private val apiBaseUrl: String): BookProvider {
                     authors?.firstOrNull(),
                     getYearFromResponsePublishedDate(publishedDate),
                     getIsbnFromResponseIndustryIdentifiers(industryIdentifiers),
-                    stripCurlFromUrl(imageLinks?.medium ?: imageLinks?.small)
+                    stripCurlFromUrl(imageLinks?.medium ?: imageLinks?.small ?: imageLinks?.thumbnail)
             )
         }
     }
@@ -95,4 +95,4 @@ data class VolumeDTO(val title: String? = null,
 
 data class IndustryIdentifierDTO(val type: String, val identifier: String)
 
-data class ImageLinksDTO(val medium: String? = null, val small: String? = null)
+data class ImageLinksDTO(val medium: String? = null, val small: String? = null, val thumbnail: String? = null)
