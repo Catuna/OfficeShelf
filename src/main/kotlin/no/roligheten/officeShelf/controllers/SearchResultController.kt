@@ -12,7 +12,7 @@ class SearchResultController(private val bookRepository: BookRepository) {
     @GetMapping(path=[""])
     fun search(@RequestParam("query") query: String?, model: Model): String {
 
-        val matchingBooks = if (query == null)
+        val matchingBooks = if (query == null || query.isEmpty())
             bookRepository.findAll()
         else
             bookRepository.findByTitleIsContaining(query)

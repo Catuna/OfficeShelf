@@ -3,7 +3,7 @@
 <div class="add-book-container">
     <div class="image-container" {{#bookMatch.imageUrl}}style="background-image: url({{bookMatch.imageUrl}})"{{/bookMatch.imageUrl}}></div>
     <div class="text-container">
-        <form method="post" action="postBook">
+        <form method="post" action="">
             <br /><label for="title">Title:</label><br />
             <input type="text" name="title" value="{{#bookMatch.title}}{{bookMatch.title}}{{/bookMatch.title}}" />
             <br /><label for="author">Author:</label><br />
