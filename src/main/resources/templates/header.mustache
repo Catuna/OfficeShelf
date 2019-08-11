@@ -9,18 +9,22 @@
     <div class="header">
         <div>
             <div class="left-container">
-                <a class="header-link" href="/">
+                <a class="header-link   " href="/">
                     📚 Bookshelf
                 </a>
             </div>
             <div class="right-container">
-                <form method="get" autocomplete="off" action="/">
-                    <input type="text" placeholder="Title or author" {{#query}}value="{{query}}" {{/query}}name="query" />
-                    <input type="submit" value="🔎" />
-                </form>
-                <form method="get" action="/add">
-                    <input type="submit" value="Add books" />
-                </form>
+                <div class="search-form">
+                    <form method="get" autocomplete="off" action="/">
+                        <input type="text" placeholder="Title or author" {{#query}}value="{{query}}" {{/query}}name="query" />
+                        <input type="submit" value="🔎" />
+                    </form>
+                </div>
+                <div class="add-form">
+                    <form method="get" action="/add">
+                        <input type="submit" value="Add books" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
