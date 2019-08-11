@@ -2,7 +2,6 @@
 
 .header {
     background-color: $primary-color;
-    color: $secondary-color;
 
     > div {
         margin: auto;
@@ -24,5 +23,10 @@
                 margin-left: 1em;
             }
         }
+    }
+
+    .header-link {
+        color: $secondary-color;
+        text-decoration: inherit;
     }
 }

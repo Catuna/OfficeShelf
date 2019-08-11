@@ -19,7 +19,7 @@ class BookCreationController(private val bookProvider: BookProvider,
     @GetMapping(path=["add"])
     fun add(): String = "addBookFrontpage"
 
-    @PostMapping(path=["lookup"])
+    @GetMapping(path=["lookup"])
     fun lookup(@RequestParam("isbn") isbn: String?, model: Model): String {
 
 

@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bundle.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400">
 </head>
@@ -8,16 +9,16 @@
     <div class="header">
         <div>
             <div class="left-container">
-                <span>
+                <a class="header-link" href="/">
                     📚 Bookshelf
-                </span>
+                </a>
             </div>
             <div class="right-container">
-                <form method="get" autocomplete="off" action="">
+                <form method="get" autocomplete="off" action="/">
                     <input type="text" placeholder="Title or author" {{#query}}value="{{query}}" {{/query}}name="query" />
                     <input type="submit" value="🔎" />
                 </form>
-                <form method="get" action="add">
+                <form method="get" action="/add">
                     <input type="submit" value="Add books" />
                 </form>
             </div>

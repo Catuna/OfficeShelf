@@ -12,11 +12,22 @@ body, html {
     font-family: "Open Sans", sans-serif;
 }
 
-input {
+input, .button {
     background-color: white;
     padding: 5px 17px;
     border-radius: 1em;
     border-style: solid;
     border-color: lightgray;
     border-width: 2px;
+    font-size: 12pt;
+    color: inherit;
+}
+
+input[type=submit] {
+    cursor: pointer;
+}
+
+a.button {
+    color: inherit;
+    text-decoration: inherit;
 }
