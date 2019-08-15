@@ -44,3 +44,6 @@ node/
 
 # Optional npm cache directory
 .npm
+
+# For testing file system image store
+images/
