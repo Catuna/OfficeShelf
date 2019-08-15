@@ -1,20 +1,27 @@
 <section class="book-result-container">
-    <div class="image-container" style="background-image: url(/images/{{imageUrl}})"></div>
+    <div class="image-container" style="background-image: url(/{{#imageUrl}}images/{{imageUrl}}{{/imageUrl}}{{^imageUrl}}placeholder.png{{/imageUrl}})"></div>
     <div class="text-container">
-        <p>
-            {{#title}}
-                {{title}}
-            {{/title}}
-        </p>
-        {{#author}}
-        <p>
-            {{author}}
-        </p>
-        {{/author}}
-        {{#publishYear}}
-            <p>
-                {{publishYear}}
-            </p>
-        {{/publishYear}}
+        <div class="title-container">
+            <span>
+                {{#title}}
+                    {{title}}
+                {{/title}}
+            </span>
+        </div>
+
+        <div class="author-container">
+            {{#author}}
+                <span>
+                    {{author}}
+                </span>
+            {{/author}}
+        </div>
+        <div class="year-container">
+            {{#publishYear}}
+                <span>
+                    {{publishYear}}
+                </span>
+            {{/publishYear}}
+        </div>
     </div>
 </section>

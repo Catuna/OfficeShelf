@@ -16,9 +16,27 @@
      }
      > .text-container {
          height: 20%;
+         padding: 5px 10px;
 
-         p {
-            margin: 5px 10px
+         > .title-container {
+            height: 55px;
+            overflow: hidden;
+            width: 100%;
+            font-size: 15pt;
+         }
+
+         > .author-container {
+            font-size: 12pt;
+            float: left;
+            white-space: nowrap;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+         }
+
+         > .year-container {
+             font-size: 12pt;
+             float: right;
          }
      }
 }
