@@ -27,6 +27,11 @@ input, .button {
     color: inherit;
 }
 
+.button-delete {
+    background-color: red;
+}
+
+
 input[type=submit] {
     cursor: pointer;
 }

@@ -64,4 +64,65 @@ class BookCreationController(private val bookProvider: BookProvider,
                 .header(HttpHeaders.LOCATION, "/add")
                 .build()
     }
+
+    @GetMapping(path=["edit"])
+    fun edit(@RequestParam("id") id: Int, model: Model): String {
+        val bookMatch = bookRepository.findById(id)
+
+        if (!bookMatch.isPresent) {
+            return ""; // TODO: 404
+        }
+        model.addAttribute("bookMatch", bookMatch.get())
+
+        return "editBook"
+    }
+
+    @PostMapping(params = ["update"], path=["edit"])
+    fun postEdit(@RequestParam("id") id: Int,
+                   @RequestParam("title") title: String?,
+                   @RequestParam("author") author: String?,
+                   @RequestParam("publishYear") publishYear: Year?,
+                   @RequestParam("isbn") isbn: String?,
+                   @RequestParam("imageUrl") imageUrl: String?): ResponseEntity<Any> {
+
+        val existingBook = bookRepository.findById(id).orElse(null)
+            ?: return ResponseEntity.notFound().build();
+
+        val imageId = when {
+            imageUrl == null -> null
+            imageUrl == existingBook.imageUrl -> existingBook.imageUrl
+            else -> try {
+                imageUrl
+                    ?.let { BufferedInputStream(URL(it).openStream()) }
+                    .let { imageStoreService.storeImage(it as InputStream) }
+            } catch (e: IOException) {
+                null
+            }
+        }
+
+        val bookToAdd = Book(id, title, author, publishYear, isbn, imageId)
+        bookRepository.save(bookToAdd)
+
+
+
+        return ResponseEntity
+            .status(HttpStatus.SEE_OTHER)
+            .header(HttpHeaders.LOCATION, "/")
+            .build()
+    }
+
+    @PostMapping(params = ["delete"], path=["edit"])
+    fun postDelete(@RequestParam("id") id: Int): ResponseEntity<Any> {
+
+        val existingBook = bookRepository.findById(id).orElse(null)
+            ?: return ResponseEntity.notFound().build();
+
+        bookRepository.delete(existingBook);
+
+        return ResponseEntity
+            .status(HttpStatus.SEE_OTHER)
+            .header(HttpHeaders.LOCATION, "/")
+            .build()
+    }
+
 }

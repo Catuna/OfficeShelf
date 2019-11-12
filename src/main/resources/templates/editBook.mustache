@@ -1,0 +1,24 @@
+{{>header}}
+<h1>Edit</h1>
+<div class="add-book-container">
+    <div class="image-container" {{#bookMatch.imageUrl}}style="background-image: url(images/{{bookMatch.imageUrl}})"{{/bookMatch.imageUrl}}></div>
+    <div class="text-container">
+        <form method="post" action="">
+            <br /><label for="title">Title:</label><br />
+            <input type="text" name="title" value="{{#bookMatch.title}}{{bookMatch.title}}{{/bookMatch.title}}" />
+            <br /><label for="author">Author:</label><br />
+            <input type="text" name="author" value="{{#bookMatch.author}}{{bookMatch.author}}{{/bookMatch.author}}" />
+            <br /> <label for="publishYear">Published:</label><br />
+            <input type="text" name="publishYear" value="{{#bookMatch.publishYear}}{{bookMatch.publishYear}}{{/bookMatch.publishYear}}" />
+            <br /><label for="isbn">ISBN:</label><br />
+            <input type="text" name="isbn" value="{{#bookMatch.isbn}}{{bookMatch.isbn}}{{/bookMatch.isbn}}" />
+            <br /><label for="imageUrl">Image URL:</label><br />
+            <input type="text" name="imageUrl" value="{{#bookMatch.imageUrl}}{{bookMatch.imageUrl}}{{/bookMatch.imageUrl}}" />
+            <br /><input type="submit" name="update" value="Update" />
+            <input style="margin-left: 12px" class="button-delete" type="submit" name="delete" value="Delete" />
+
+            <input type="hidden" name="id" value="{{bookMatch.id}}" />
+        </form>
+    </div>
+</div>
+{{>footer}}

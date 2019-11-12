@@ -1,12 +1,15 @@
 .book-result-container {
     border-radius: 10px 10px 0 0;
-     height: 350px;
-     width: 250px;
-     -webkit-box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
-     -moz-box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
-     box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
-     background-color: white;
-     margin: 10px;
+    height: 350px;
+    width: 250px;
+    -webkit-box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
+    -moz-box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
+    box-shadow: 5px 5px 5px -4px rgba(168,168,168,1);
+    background-color: white;
+    margin: 10px;
+    color: inherit;
+    text-decoration: inherit;
+
 
      > .image-container {
         border-radius: 10px 10px 0 0;
